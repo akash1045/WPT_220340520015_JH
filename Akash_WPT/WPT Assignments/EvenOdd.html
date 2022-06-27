@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+         document.addEventListener('DOMContentLoaded',()=>{
+            console.log('DOM');
+            let num=document.querySelector("#t1");
+            num.addEventListener('blur',()=>{
+                if(document.querySelector("#t1").value%2==0)
+                {
+                    document.querySelector('#msg').innerHTML="Even";
+                }
+                else
+                {
+                    document.querySelector('#msg').innerHTML="Odd";
+                }
+
+         });
+        });
+    </script>
+</head>
+<body>
+    <h1> Question - 1</h1>
+    <hr>
+    
+    <input type="text" id="t1" placeholder="Enter Number">
+    <span id="msg"> Message</span>
+    
+</body>
+</html>

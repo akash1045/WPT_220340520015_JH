@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <Script>
+     window.addEventListener('DOMContentLoaded',()=>{
+        const text=document.querySelector('#t1');
+        const submit=document.querySelector('#btn');
+        submit.addEventListener('click',()=>{
+                console.log('button is clicked');
+                document.querySelector('#message').innerHTML="  "+text.value.toUpperCase();
+        });
+        const res=document.querySelector('#reset');
+        res.addEventListener('click',()=>{
+            console.log('reset button is clicked');
+            text.value="";
+            document.querySelector('#message').innerHTML=" Message ";
+        });
+    });
+    </Script>
+</head>
+<body>
+    <h1>Self test - 2</h1>
+    <input type="text" id="t1" placeholder="Enter Text"> <span id="message"> Message </span>
+    <br><br>
+    <input type="button" id="btn" value="Submit">
+    <input type="button" id="reset" value="Reset">
+</body>
+
+
+
+</html>

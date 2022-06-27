@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    var items = [];
+    for (let i = 0; i < 10; i++)
+        items[i] = Math.floor(Math.random() * 100);
+    let count = 10;
+
+    console.log(items);
+
+    window.addEventListener('DOMContentLoaded', () => {
+        let no = 0;
+        const t1 = document.querySelector("#t1")
+        t1.addEventListener('blur', () => {
+            no = document.querySelector("#t1").value;
+            console.log(no + " Value Entered in the Text box")
+            const output = items.indexOf(parseFloat(no))
+            if (output == -1) {
+
+                document.querySelector("#add").disabled = false;  //add button is enabled
+                document.querySelector("#delete").disabled = true;
+                document.querySelector("#edit").disabled = true;
+                document.querySelector("#viewall").disabled = false;
+                document.querySelector("#sop").disabled = true;
+                const add = document.querySelector("#add");
+
+            }
+            else {
+                document.querySelector("#add").disabled = true;
+                document.querySelector("#delete").disabled = false; //delete button is enabled
+                document.querySelector("#edit").disabled = false; //edit button is enabled
+                document.querySelector("#viewall").disabled = true;
+                document.querySelector("#sop").disabled = true;
+
+            }
+
+
+
+        });
+
+
+        add.addEventListener('click', () => {
+            no = parseFloat(no);
+            console.log(no);
+            items[count++] = no;
+
+            document.querySelector("#add").disabled = true;
+            console.log(items);
+            document.querySelector("#viewall").disabled = false;
+            document.querySelector("#sop").disabled = false;
+
+        });
+        let edit = document.querySelector("#edit");
+        edit.addEventListener('click', () => {
+            let x = window.prompt("Enter new value");
+            x = parseFloat(x);
+            let v=parseInt(document.querySelector('#t1').value);
+            
+            const output = items.indexOf(x);
+            if(output==-1){
+                    for (let index = 0; index < items.length; index++) {
+                        if(items[index]==v)
+                        {
+                            console.log(x);
+                        
+                        items.splice(index,1,x);
+                        break;
+                        }
+                    }
+                
+
+            }
+            else {
+                document.querySelector("#edit").disabled = true;
+            }
+
+            
+
+        });
+
+        var delete1 = document.getElementById("delete");
+        delete1.addEventListener('click', () => {
+            console.log(no);
+            for (var i = 0; i < items.length; i++) {
+
+                if (items[i] == no) {
+
+                    items.splice(i, 1);
+                }
+
+            }
+            console.log(items);
+
+            document.querySelector("#delete").disabled = true;
+            document.querySelector("#edit").disabled = true;
+        });
+
+        let viewall = document.querySelector("#viewall");
+        viewall.addEventListener('click', () => {
+            let y = "";
+
+            items.forEach(element => {
+                y = y + " " + element;
+            });
+            document.querySelector("#msg2").innerText = "Array : "+y;
+        });
+        let odd = document.querySelector("#sop");
+        odd.addEventListener('click', () => {
+            let y = "";
+
+            for (let x = 0; x < items.length; x++) {
+                if (x % 2 == 0) {
+                    console.log("in the even");
+                }
+                else {
+                    y = y + " " + items[x];
+                }
+            }
+            document.querySelector("#msg2").innerText = "Array : "+y;
+        });
+
+
+      
+
+
+
+    });
+</script>
+
+
+<body>
+    <h1>Assignment Number 1</h1>
+    <input type="text" id="t1"> <span id="msg1"> x </span>
+    <br>
+    <input type="button" id="add" value="add" disabled>
+    <input type="button" id="edit" value="edit" disabled>
+    <input type="button" id="delete" value="delete" disabled>
+    <input type="button" id="viewall" value="view all" disabled>
+    <input type="button" id="sop" value="show odd position" disabled>
+    <br> <span id="msg2"> Array </span>
+
+</body>
+
+</html>

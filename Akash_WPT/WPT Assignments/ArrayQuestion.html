@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let arr=[10,20,30,40,50,60,70,80,90,100];
+       document.addEventListener('DOMContentLoaded',()=>{
+            console.log('DOM');
+            
+            let show=document.querySelector("#show");
+            show.addEventListener('click',()=>{
+                document.querySelector('#arr').innerHTML=arr;
+            });
+
+            let max=document.querySelector("#sum");
+            max.addEventListener('click',()=>{
+                let sum=0
+                for (let index = 0; index < arr.length; index++) {
+                     sum=sum+arr[index];
+                
+                }
+                document.querySelector('#msg').innerHTML=sum;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1> Question - 2</h1>
+    <hr>
+    
+    <input type="button" id="show" value="Display Array Elements">
+    <input type="button" id="sum" value="Sum of Array Elements">
+    <br>
+     <p>Array : <span id="arr"></span></p>
+    <p>Sum : <span id="msg"> </span></p>
+</body>
+</html>
